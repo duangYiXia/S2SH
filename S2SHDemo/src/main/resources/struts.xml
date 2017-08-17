@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE struts PUBLIC  "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"   "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	
+ 	<constant name="struts.objectFactory" value="spring" />
+	<!-- 指定jsp文件所在的目录地址  可加可不加！！
+	<constant name="struts.convention.result.path" value="/WEB-INF" /> -->
+	
+	<!-- 配置struts2应用于开发模式，发布时要设置为false 可加可不加！！ -->
+	<constant name="struts.devMode" value="false" />
+
+	<!-- 后缀为.do的全部交给STRUTS处理 可加可不加！！ -->
+	<constant name="struts.action.extension" value="do" />
+
+	<!--用于配置包名后缀。默认为action、actions、struts,如果放action的包名修改，则必须加，否则报There is no 
+		Action mapped for namespace [/] -->
+	<constant name="struts.convention.package.locators" value="web" />
+
+	<!-- 设置在class被修改时是否热加载，发布时要设置为false 可加可不加！！ -->
+	<constant name="struts.convention.classes.reload" value="true" />
+
+	
+
+	<!-- <package name="user" extends="struts-default" namespace="/Login"> <action 
+		name="goLogin" class="loginAction" method="login"> <result name="success">/WEB-INF/login.jsp</result> 
+		</action> </package> -->
+	<package name="default-package" extends="struts-default">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.NullPointerException"
+				result="error" />
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
+	</package>
+
+</struts>  
